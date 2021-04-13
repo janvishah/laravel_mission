@@ -22,7 +22,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create');
     }
 
     /**
@@ -44,7 +44,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //
+        $customer = Customer::findorFail($id);
+            return view('customers.show',['customer' => $customer]);
     }
 
     /**

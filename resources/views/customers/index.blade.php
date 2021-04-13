@@ -7,7 +7,7 @@
 @section('content')
     @foreach($customers as $customer)
         <div>
-            {{$customer->name}} 
+        <a href="{{action('App\Http\Controllers\CustomerController@show', $customer['id']) }}">{{$customer->name}}</a> 
         </div>
 
     @endforeach
