@@ -33,7 +33,15 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required',
+            'date_of_birth' => 'required'
+        ]);
+
+        Customer::create($request->all());
+
+        return redirect('/customers')->with('success', 'Product created successfully.');
     }
 
     /**

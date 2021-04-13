@@ -4,7 +4,7 @@
 @stop
 
 @section('content')
-<form action="/pizzas" method="POST">
+<form action="/customers" method="POST">
     @csrf
     <lable for="name"> Your name: </lable>
     <input type="text" id="name" name="name" /> <br/>
@@ -13,7 +13,7 @@
     <input type="text" id="email" name="email" /> <br/>
 
     <lable for="dob"> Your date of birth: </lable>
-    <input type="text" id="date_of_birth" name="date_of_birth" /> <br/>
+    <input type="text" id="date_of_birth" name="date_of_birth" placeholder="yyyy-date-month" /> <br/>
 
                         <input type="file" name="image">
                         <input type="submit" value="Upload">
