@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Customer;
 use Illuminate\Http\Request;
 
 class CustomerController extends Controller
@@ -13,11 +13,10 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        return view('/customers/index');
+        $customers = Customer::all();
+        return view('customers.index',['customers'=> $customers]);
     }
-
-    /**
-     * Show the form for creating a new resource.
+     /* Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
