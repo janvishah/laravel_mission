@@ -36,13 +36,22 @@ class CustomerController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'date_of_birth' => 'required'
+            'date_of_birth' => 'required',
+            'image' => 'required'
         ]);
 
+        
         Customer::create($request->all());
+        if($request->hasFile('image')){
+            $filename = $request->image->getClientOriginalName();
+            $request->image->storeAs('images',$filename,'public');
+            Auth()->user()->update(['image'=>$filename]);
+        }
 
         return redirect('/customers')->with('success', 'Product created successfully.');
     }
+
+    
 
     /**
      * Display the specified resource.

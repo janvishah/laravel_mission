@@ -15,7 +15,9 @@
     <lable for="dob"> Your date of birth: </lable>
     <input type="text" id="date_of_birth" name="date_of_birth" placeholder="yyyy-date-month" /> <br/>
 
-                        <input type="file" name="image">
-                        <input type="submit" value="Upload">
-                    </form>
+    <input type="file" name="image">
+    <input type="submit" value="Upload">
+</form>
+
+<a href="/customers" class="back"> back to list of customers </a>
 @stop

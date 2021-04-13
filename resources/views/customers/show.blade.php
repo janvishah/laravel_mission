@@ -8,4 +8,8 @@
     <p class="type"> Email - {{$customer->email}}</p>
     <p class="base"> DOB - {{$customer->date_of_birth}} </p>
     <a href="/customers" class="back"> back to list of customers </a>
+
+    
+<img class="image rounded-circle" src="{{asset('/storage/images/'.$customer->image)}}" alt="profile_image" style="width: 80px;height: 80px; padding: 10px; margin: 0px; ">
+
 @endsection

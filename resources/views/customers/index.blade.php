@@ -11,4 +11,5 @@
         </div>
 
     @endforeach
+    <a href="{{action('App\Http\Controllers\CustomerController@create') }}">Enter details of new customer</a> 
 @endsection
