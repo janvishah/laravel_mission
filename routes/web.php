@@ -20,4 +20,5 @@ Route::get('/', function () {
 Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::resource('/customers', App\Http\Controllers\CustomerController::class)->names(['index'=>'home'])->middleware('auth');;
+Route::resource('/customers', App\Http\Controllers\CustomerController::class)->middleware('auth');
+Route::resource('/customers', App\Http\Controllers\MEasurementController::class)->middleware('auth');;
