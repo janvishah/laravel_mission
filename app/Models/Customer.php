@@ -9,4 +9,8 @@ class Customer extends Model
 {
     use HasFactory;
     protected $fillable = ['name', 'email', 'date_of_birth','image'];
+    public function measurements()
+    {
+        return $this->hasMany(Measurement::class);
+    }
 }

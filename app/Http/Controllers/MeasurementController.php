@@ -21,9 +21,10 @@ class MeasurementController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        //$customer = Customer::findorFail($id);
+        return view('Measurements.create')->with('id',$id);
     }
 
     /**
@@ -32,9 +33,17 @@ class MeasurementController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request,$id)
     {
-        //
+        $request->customer_id = $id;
+        $request->validate([
+            'height' => 'required',
+            'weight' => 'required',
+            'blood_pressure' => 'required',
+            'customer_id' => 'required'
+        ]);
+        Measurment::create($request->all());
+        return redirect('/customers')->with('success', 'Product created successfully.');
     }
 
     /**

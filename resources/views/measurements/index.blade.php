@@ -7,8 +7,7 @@
 @section('content')
     @foreach($customers as $customer)
         <div>
-        <a href="{{action('App\Http\Controllers\CustomerController@show', $customer['id']) }}">{{$customer->name}}</a>
-        <a href="{{ route('measurement.create', [$customer->id]) }}">Add Measurement</a>
+        <a href="{{action('App\Http\Controllers\CustomerController@show', $customer['id']) }}">{{$customer->name}}</a> 
         </div>
 
     @endforeach
