@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Customer;
+use App\Models\Measurement;
 use Illuminate\Http\Request;
 
 class MeasurementController extends Controller
@@ -35,14 +36,18 @@ class MeasurementController extends Controller
      */
     public function store(Request $request,$id)
     {
-        $request->customer_id = $id;
-        $request->validate([
-            'height' => 'required',
-            'weight' => 'required',
-            'blood_pressure' => 'required',
-            'customer_id' => 'required'
-        ]);
-        Measurment::create($request->all());
+        //$request->customer_id = $id;
+       
+
+        $customer = Customer::findorFail($id);
+        $measurement= new Measurement();
+        $measurement->height = $request->height;
+        $measurement->weight = $request->weight;
+        $measurement->blood_pressure = $request->blood_pressure;
+       // $request->user()->posts()->save($post);
+        $customer->measurements()->save($measurement);
+
+       // Measurment::create($request->all());
         return redirect('/customers')->with('success', 'Product created successfully.');
     }
 
