@@ -29,3 +29,8 @@ Route::post('measurements/{id}', 'App\http\Controllers\MeasurementController@sto
 
 Route::resource('measurements', 'App\Http\Controllers\MeasurementController', ['except' => ['create','store'] ] )->middleware('auth');
 
+Route::get('locale/{locale}', function ($locale){
+    Session::put('locale', $locale);
+    return redirect()->back();
+});
+
