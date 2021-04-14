@@ -61,8 +61,8 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        //$customer = Customer::findorFail($id);
-        $customer = $customer->intersect(User::where('id', $id)->get());
+        $customer = Customer::findorFail($id);
+       
             return view('customers.show',['customer' => $customer]);
     }
 
