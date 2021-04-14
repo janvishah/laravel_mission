@@ -21,7 +21,8 @@ Auth::routes();
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('/customers', App\Http\Controllers\CustomerController::class)->middleware('auth');
-Route::get('measurements/{id}', 'App\http\Controllers\MeasurementController@create')->name('measurement.create');
+Route::get('measurements/create/{id}', 'App\http\Controllers\MeasurementController@create')->name('measurement.create');
+//Route::get('measurements/{id}', 'App\http\Controllers\MeasurementController@show')->name('measurement.show');
 Route::post('measurements/{id}', 'App\http\Controllers\MeasurementController@store')->name('measurement.store');
 
 //Define your resource routes, excluding 'create'

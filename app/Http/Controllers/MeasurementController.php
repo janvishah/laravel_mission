@@ -44,10 +44,10 @@ class MeasurementController extends Controller
         $measurement->height = $request->height;
         $measurement->weight = $request->weight;
         $measurement->blood_pressure = $request->blood_pressure;
-       // $request->user()->posts()->save($post);
+    
         $customer->measurements()->save($measurement);
 
-       // Measurment::create($request->all());
+ 
         return redirect('/customers')->with('success', 'Product created successfully.');
     }
 
@@ -60,6 +60,10 @@ class MeasurementController extends Controller
     public function show($id)
     {
         //
+        $customer = Customer::findorfail($id);
+        $customer->load('measurements');
+        
+        return view('measurements.show',['customer'=> $customer]);
     }
 
     /**
