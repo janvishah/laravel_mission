@@ -37,7 +37,11 @@ class MeasurementController extends Controller
     public function store(Request $request,$id)
     {
         //$request->customer_id = $id;
-       
+        $request->validate([
+            'height' => 'required',
+            'weight' => 'required',
+            'blood_pressure' => 'nullable',
+        ]);
 
         $customer = Customer::findorFail($id);
         $measurement= new Measurement();

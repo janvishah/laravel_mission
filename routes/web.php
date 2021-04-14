@@ -21,11 +21,11 @@ Auth::routes(["register" => false]);
 
 
 Route::resource('/customers', App\Http\Controllers\CustomerController::class)->middleware('auth');
-Route::get('measurements/create/{id}', 'App\http\Controllers\MeasurementController@create')->name('measurement.create');
+Route::get('measurements/create/{id}', 'App\http\Controllers\MeasurementController@create')->name('measurement.create')->middleware('auth');
 
-Route::post('measurements/{id}', 'App\http\Controllers\MeasurementController@store')->name('measurement.store');
+Route::post('measurements/{id}', 'App\http\Controllers\MeasurementController@store')->name('measurement.store')->middleware('auth');
 
 //Define your resource routes, excluding 'create'
 
-Route::resource('measurements', 'App\Http\Controllers\MeasurementController', ['except' => ['create','store'] ] );
+Route::resource('measurements', 'App\Http\Controllers\MeasurementController', ['except' => ['create','store'] ] )->middleware('auth');
 
